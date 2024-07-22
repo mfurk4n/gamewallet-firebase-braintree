@@ -14,7 +14,7 @@
 4. **paymentService**
    - It is a service where the user can buy gold with a credit card and creates a payment transaction record for these transactions.
 
-## Sistem Mimarisi, Güvenlik ve Ölçeklenebilirlik
+## System Architecture, Security and Scalability
 
 1. **All Services Run On Firebase Cloud Functions**
    - All backend functions of the project were built and served using Firebase Cloud Functions.
