@@ -23,16 +23,16 @@
    - Kullanıcıların hızlı ve güvenli bir şekilde kayıt olup giriş yapabilmeleri için Firebase Google Sign-In entegrasyonu yapıldı.
 
 3. **Firestore Batch Kullanılarak Transactionlar Atomik Hale Getirildi**
-   - Firestore'da yapılan tüm transactionlar, Firestore Batch kullanılarak atomik hale getirildi.
+   - Firestore'da yapılan çoklu kayıtlar Firestore Batch kullanılarak atomik hale getirildi.
 
 4. **Firestore Production Rule Kuralları Özelleştirildi**
-   - Firestore güvenlik kuralları, sadece oturum açmış kullanıcıların verilere erişimini sağlayacak şekilde özelleştirildi.
+   - Firestore güvenlik kuralları sadece oturum açmış kullanıcıların verilere erişimini sağlayacak şekilde özelleştirildi.
 
 5. **Firebase onCall Fonksiyonları ile Servisler Erişime Açıldı**
    - Servisler, Firebase Client SDK ile erişime açık hale getirildi ve Firebase Authentication ile otomatik doğrulama sağlandı.
 
 6. **Firestore ve Firebase Fonksiyon ve Triggerları Aynı Bölgeye Deploy Edildi**
-   - Tüm Firestore ve Firebase fonksiyonları ile tetikleyiciler, aynı bölgede (Frankfurt) deploy edildi.
+   - Tüm Firestore ve Firebase fonksiyonları ile tetikleyiciler aynı bölgede (Frankfurt) deploy edildi.
 
 7. **Braintree Gateway erişimi Firebase Authentication ile doğrulanarak sağlandı**
    - Ödeme yapacak kullanıcılar Firebase Function kullanılarak Firebase Authentication doğrulaması ile Gateway erişimine sunuldu. 
