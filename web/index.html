@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Services</title>
+    <style>
+        #googleButton, #paymentButton, #userDataButton, #productName, #productPrice, #addProductButton {
+            margin-bottom: 15px; 
+        }
+
+        #loader {
+            border: 16px solid #f3f3f3; 
+            border-top: 16px solid #3498db; 
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            display: none; 
+            margin: auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
+
+        .product-box {
+            border: 1px solid #aaa; 
+            background-color: #f0f0f0; 
+            padding: 10px;
+            margin: 10px;
+            cursor: pointer;
+            min-width: 150px;
+            text-align: center;
+            border-radius: 5px; 
+            transition: background-color 0.3s; 
+        }
+
+        .product-box:hover {
+            background-color: #e0e0e0; 
+        }
+    </style>
+    <script src="https://js.braintreegateway.com/web/dropin/1.43.0/js/dropin.min.js"></script>
+</head>
+<body>
+    <h1>The result of each service is written at the bottom of the page.</h1>
+    <button id="googleButton" style="display: block;">Sign in with Google</button>
+    <button id="paymentButton" style="display: none;">Buy 10K Gold 50£</button>
+    <button id="userDataButton" style="display: none;">Get User Data</button>
+    <input type="text" id="productName" placeholder="Enter product name" style="display: none;">
+    <input type="number" id="productPrice" placeholder="Enter product price" style="display: none;">
+    <button id="addProductButton" style="display: none;">Add Product</button>
+    <div id="loader"></div>
+    <button id="fetchProductsButton" style="display: none;">Fetch Products To Buy (There are ready products)</button>
+    <div id="productsContainer" class="product-container"></div>
+    <div id="dropin-container"></div>
+    <button id="submitPaymentButton" style="display: none;">Submit Payment</button>
+    <script type="module" src="./index.js"></script>
+</body>
+</html>
