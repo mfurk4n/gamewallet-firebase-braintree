@@ -1,57 +1,57 @@
 # Game Services
 
-## Servis Ayrıntıları
+## Service Details
 
 1. **userService**
-   - Kullanıcının verilerini çeken servistir.
-
+   - It is the service that retrieves the user's data.
+     
 2. **productService**
-   - Oyun içi ürünleri getiren, oyun içi ürün ekleyen servislerdir.
+   - These are services that bring in-game products and add in-game products.
 
 3. **purchaseService**
-   - Oyun içi ürünleri satın almayı sağlayan, satılan adeti artıran, kullanıcıya atayan ve bu işlemler için ürün işlem kaydı yaratan servistir.
+   - It is a service that allows purchasing in-game products, increases the quantity sold, assigns them to the user and creates a product transaction record for these transactions.
 
 4. **paymentService**
-   - Kullanıcının kredi kartı ile altın alıp, bu işlemler için ödeme işlem kaydı yaratan servistir.
+   - It is a service where the user can buy gold with a credit card and creates a payment transaction record for these transactions.
 
 ## Sistem Mimarisi, Güvenlik ve Ölçeklenebilirlik
 
-1. **Tüm Servisler Firebase Cloud Functions ile Hizmete Açıldı**
-   - Projenin tüm arka uç işlevleri Firebase Cloud Functions kullanılarak oluşturuldu ve hizmete sunuldu.
+1. **All Services Run On Firebase Cloud Functions**
+   - All backend functions of the project were built and served using Firebase Cloud Functions.
 
-2. **Kayıt ve Giriş İşlemleri için Firebase Google Sign-In Kullanıldı**
-   - Kullanıcıların hızlı ve güvenli bir şekilde kayıt olup giriş yapabilmeleri için Firebase Google Sign-In entegrasyonu yapıldı.
+2. **Firebase Google Sign-In Used for Registration and Login**
+   - Firebase Google Sign-In integration was made so that users can register and log in quickly and securely.
 
-3. **Firestore Batch Kullanılarak Transactionlar Atomik Hale Getirildi**
-   - Firestore'da yapılan çoklu kayıtlar Firestore Batch kullanılarak atomik hale getirildi.
+3. **Database Records Atomicized Using Firestore Batch**
+   - Multiple records made in Firestore were atomicized using Firestore Batch.
 
-4. **Firestore Production Rule Kuralları Özelleştirildi**
-   - Firestore güvenlik kuralları sadece oturum açmış kullanıcıların verilere erişimini sağlayacak şekilde özelleştirildi.
+4. **Firestore Production Rules Customized**
+   - Firestore security rules are customized to ensure that only logged in users have access to data.
 
-5. **Firebase onCall Fonksiyonları ile Servisler Erişime Açıldı**
-   - Servisler, Firebase Client SDK ile erişime açık hale getirildi ve Firebase Authentication ile otomatik doğrulama sağlandı.
+5. **Services Opened to Access with Firebase onCall Functions**
+   - Services were made accessible with Firebase Client SDK and automatic verification was provided with Firebase Authentication.
 
-6. **Firestore ve Firebase Fonksiyon ve Triggerları Aynı Bölgeye Deploy Edildi**
-   - Tüm Firestore ve Firebase fonksiyonları ile tetikleyiciler aynı bölgede (Frankfurt) deploy edildi.
+6. **Firestore and Firebase Functions and Triggers Deployed to the Same Region**
+   - All Firestore and Firebase functions and triggers were deployed in the same region (Frankfurt).
 
-7. **Braintree Gateway erişimi Firebase Authentication ile doğrulanarak sağlandı**
-   - Ödeme yapacak kullanıcılar Firebase Function kullanılarak Firebase Authentication doğrulaması ile Gateway erişimine sunuldu. 
+7. **Braintree Gateway access was achieved by authenticating with Firebase Authentication**
+   - Users who will make payments are given access to the Gateway with Firebase Authentication verification using Firebase Function.
 
-## Trigger Servisleri
+## Trigger Services
 
 1. **createUserTrigger**
-   - Kullanıcı ilk kez oturum açtığında, otomatik olarak bir Firestore dokümanı yaratan bir trigger oluşturuldu.
+   - Created a trigger that automatically creates a Firestore document when the user logs in for the first time.
 
 2. **paymentTransactionTrigger**
-   - Ödeme işlemi sonrasında otomatik olarak tetiklenen ve işlemleri loglayan bir trigger oluşturuldu.
+   - A trigger was created that automatically triggered after the payment process and logged the transactions.
 
-## Veritabanı Şeması
+## Database Schema
 
 ![Veritabanı Şeması](dbschema.png)
 
 ---
 
-## Kullanılan Teknolojiler
+## Used Technologies
 
 - **Firebase Cloud Functions**
 - **Firebase Firestore**
@@ -62,6 +62,6 @@
 - **Braintree Sandbox**
 - **PayPal**
 
-## Kurulum ve Kullanım
+## Usage
 
-    - web dizininin terminalinden "npm start" ile çalıştırın
+    - run it with "npm start" from the web directory's terminal
