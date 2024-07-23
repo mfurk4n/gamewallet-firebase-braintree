@@ -69,3 +69,23 @@ exports.createPaymentTransaction = functions.region('europe-west3').https.onCall
         return { status: 'error', msg: 'Internal Server Error' };
     }
 });
+
+exports.getAllPaymentTransactions = functions.region('europe-west3').https.onRequest(async (req, res) => {
+    try {
+        const transactionsSnapshot = await db.collection('payment-transactions').get();
+        const transactions = [];
+
+        transactionsSnapshot.forEach(doc => {
+            const transactionData = doc.data();
+            transactions.push({ id: doc.id, ...transactionData, created_at: format(transactionData.created_at.toDate(), 'dd MMMM yyyy HH:mm:ss') });
+        });
+
+        res.status(200).send({
+            status: 'success',
+            data: transactions
+        });
+    } catch (error) {
+        console.error('Error fetching products: ', error);
+        res.status(500).send({ status: 'error', msg: 'Internal Server Error' });
+    }
+});
