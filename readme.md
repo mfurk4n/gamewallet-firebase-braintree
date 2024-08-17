@@ -1,4 +1,4 @@
-# Game Services
+# Game Wallet Service
      
 ## Service Details
 
